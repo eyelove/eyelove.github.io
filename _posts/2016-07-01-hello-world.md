@@ -2,7 +2,7 @@
 layout: post
 published: true
 fbcomments: false
-title: Untitled
+title: Hello world
 ---
 ## 처음으로 설치했습니다.
 
