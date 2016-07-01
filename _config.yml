@@ -8,7 +8,7 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-#permalink:           pretty
+permalink: pretty
 #relative_permalinks: true
 
 # Site settings
@@ -38,3 +38,87 @@ version:             1.0.0
 gems: [jekyll-paginate]
 paginate: 5
 paginate_path: "page:num"
+
+# prose
+prose:
+  rooturl: '_posts'
+  siteurl: 'https://eyelove.github.io/'
+  media: 'media'
+  metadata:
+    _posts:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "post"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "photo_url"
+        field:
+          element: "text"
+          label: "450x450 Picture Thumb for index"
+          value: ""
+      - name: "fbcomments"
+        field:
+          element: "checkbox"
+          label: "Facebook Comments"
+          value: false
+      - name: "published"
+        field:
+          element: "checkbox"
+          label: "Published"
+          value: false
+      - name: "category"
+        field:
+          element: "select"
+          label: "Select Category"
+          placeholder: "Choose Category"
+          options:
+            - name: "Docker"
+              value: "docker"
+            - name: "Linux"
+              value: "linux"
+            - name: "CLI"
+              value: "cli"
+            - name: "Redis"
+              value: "redis"
+      - name: "tags"
+        field:
+          element: "multiselect"
+          label: "Add Tags"
+          placeholder: "Choose Tags"
+          alterable: true
+          options:
+            - name: "Docker"
+              value: "docker"
+            - name: "Linux"
+              value: "linux"
+            - name: "CLI"
+              value: "cli"
+            - name: "Javascript"
+              value: "javascript"
+            - name: "Python"
+              value: "python"
+            - name: "Php"
+              value: "php"
+            - name: "NodeJs"
+              value: "nodejs"
+            - name: "Java"
+              value: "java"
+    _posts/static:
+      - name: "layout"
+        field:
+          element: "hidden"
+          value: "page"
+      - name: "title"
+        field:
+          element: "text"
+          label: "Title"
+          value: ""
+      - name: "permalink"
+        field:
+          element: "text"
+          label: "Permalink"
+          value: ""
