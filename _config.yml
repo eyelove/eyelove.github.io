@@ -8,8 +8,8 @@
 # Permalinks
 #
 # Use of `relative_permalinks` ensures post links from the index work properly.
-permalink:           pretty
-relative_permalinks: true
+#permalink:           pretty
+#relative_permalinks: true
 
 # Site settings
 title: Engineering Blog
@@ -21,7 +21,6 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://eyelove.github.io" # the base hostname & protocol for your site
 twitter_username: eyelove
 github_username: eyelove
-paginate: 5
 
 # Build settings
 markdown: kramdown
@@ -34,3 +33,8 @@ author:
 
 # Custom vars
 version:             1.0.0
+
+# Gems
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "page:num"
