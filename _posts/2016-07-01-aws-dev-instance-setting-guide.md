@@ -8,10 +8,10 @@ tags:
   - linux
   - cli
 ---
-## aws dev instance setting guide
 
-- m4.large / 200G 
-- ssh -i "cross-target-kr.pem" ec2-user@ec2-52-78-66-29.ap-northeast-2.compute.amazonaws.com
+## EC2 Instance Type
+
+- m4.large
 
 ## system
 
@@ -26,9 +26,8 @@ sudo passwd
 
 ## mariadb v10.0
 
+- sudo vim /etc/yum.repos.d/mariadb.repo
 ```
-sudo vim /etc/yum.repos.d/mariadb.repo
----
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.0/centos6-amd64
@@ -42,7 +41,7 @@ sudo cp -a /usr/share/mysql/my-huge.cnf /etc/my.cnf.d/
 sudo mkdir /home/mysqldb
 ```
 
-> sudo vim /etc/my.cnf.d/my-huge.cnf
+- sudo vim /etc/my.cnf.d/my-huge.cnf
 ```
 [client]
 default-character-set = utf8
@@ -74,13 +73,14 @@ sudo mysqladmin -u root password 'new-password'
 
 ### Security
 
-> mysql -u root -p
+- mysql -u root -p
 ```sql
 MariaDB [(none)]> use mysql
 MariaDB [mysql]> delete from user where password = '';
 ```
 
 ### Tunning 
+
 ```
 cd ~
 wget http://mysqltuner.pl/ -O mysqltuner.pl
@@ -90,7 +90,7 @@ perl mysqltuner.pl
 
 ## mongodb v3.2
 
-> sudo vim /etc/yum.repos.d/mongodb-org-3.2.repo
+- sudo vim /etc/yum.repos.d/mongodb-org-3.2.repo
 ```
 [mongodb-org-3.2]
 name=MongoDB Repository
@@ -103,7 +103,7 @@ enabled=1
 sudo yum -y install mongodb-org mongodb-org-mongos mongodb-org-server mongodb-org-shell mongodb-org-tools
 ```
 
-> sudo vim /etc/mongod.conf
+- sudo vim /etc/mongod.conf
 ```
 storage:
   dbPath: /home/mongo
@@ -126,7 +126,7 @@ sudo tar xvzf redis-stable.tar.gz
 cd redis-stable
 ```
 
-> gcc 나 jemalloc 를 못찾는 오류가 발생할 경우 yum으로 "Development Tools"을 설치후 아래 명령어 실행 후 다시 make한다.
+- gcc 나 jemalloc 를 못찾는 오류가 발생할 경우 yum으로 "Development Tools"을 설치후 아래 명령어 실행 후 다시 make한다.
 ```
 sudo make distclean 
 ```
@@ -151,7 +151,7 @@ sudo cp utils/redis_init_script /etc/init.d/redis_sentinel
 sudo cp utils/redis_init_script /etc/init.d/redis_47001
 ```
 
-> sudo vim /etc/init.d/redis_47001
+- sudo vim /etc/init.d/redis_47001
 ```sh
 #!/bin/sh
 #
@@ -168,7 +168,7 @@ CLIEXEC=/usr/local/bin/redis-cli
 ```
 
 
-> sudo vim /etc/init.d/redis_sentinel
+- sudo vim /etc/init.d/redis_sentinel
 ```sh
 #!/bin/sh
 #
@@ -202,7 +202,7 @@ sudo cp sentinel.conf /etc/redis/47000.conf
 sudo cp redis.conf /etc/redis/47001.conf
 ```
 
-> sudo vim /etc/redis/47001.conf
+- sudo vim /etc/redis/47001.conf
 ```
 port 47001
 pidfile /var/run/redis_47001.pid
@@ -210,7 +210,7 @@ logfile "/var/log/redis_47001.log"
 dir "/var/redis/47001"
 ```
 
-> sudo vim /etc/redis/47000.conf
+- sudo vim /etc/redis/47000.conf
 ```
 port 47000
 
@@ -241,11 +241,11 @@ sudo mkdir /var/redis/47002
 sudo mkdir /var/redis/47003
 ```
 
-> redis pid list
-- /var/run/redis_47000.pid
-- /var/run/redis_47001.pid
-- /var/run/redis_47002.pid
-- /var/run/redis_47003.pid
+- redis pid list
+  - /var/run/redis_47000.pid
+  - /var/run/redis_47001.pid
+  - /var/run/redis_47002.pid
+  - /var/run/redis_47003.pid
 
 ```
 sudo chkconfig --add redis_sentinel
@@ -277,14 +277,14 @@ sudo chown ec2-user.ec2-user /home/www
 mkdir /home/www/ssp
 ```
 
-> sudo vim /etc/nginx/nignx.conf
+- sudo vim /etc/nginx/nignx.conf
 ```
 user nobody;
 error_log /home/httpd/logs/nginx/error.log;
 access_log  /home/httpd/logs/access.log  main;
 ```
 
-> sudo vim /etc/nginx/conf.d/ssp.conf
+- sudo vim /etc/nginx/conf.d/ssp.conf
 ```
 server {
     listen 80;
@@ -309,12 +309,12 @@ server {
 }
 ```
 
-> sudo vim /etc/opt/remi/php70/php-fpm.conf
+- sudo vim /etc/opt/remi/php70/php-fpm.conf
 ```
 error_log = /home/httpd/logs/php-fpm/error.log
 ```
 
-> sudo vim /etc/opt/remi/php70/php.ini
+- sudo vim /etc/opt/remi/php70/php.ini
 ```
 short_open_tag = On
 expose_php = Off
@@ -357,7 +357,7 @@ mkdir ssp/public
 cp index.php ssp/public/index.php
 ```
 
-> vim ssp/public/index.php
+- vim ssp/public/index.php
 ```
         $public_path = dirname(__FILE__);
         $site_root = dirname(dirname($public_path));
