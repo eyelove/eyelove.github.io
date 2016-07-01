@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 ## 처음으로 설치했습니다.
 
