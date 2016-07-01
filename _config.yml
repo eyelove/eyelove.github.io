@@ -5,8 +5,15 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# Permalinks
+#
+# Use of `relative_permalinks` ensures post links from the index work properly.
+permalink:           pretty
+relative_permalinks: true
+
 # Site settings
 title: Engineering Blog
+tagline: 'A Jekyll theme'
 email: eyelove@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
     실무에서 사용한 자료 모음
@@ -14,6 +21,16 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://eyelove.github.io" # the base hostname & protocol for your site
 twitter_username: eyelove
 github_username: eyelove
+paginate: 5
 
 # Build settings
 markdown: kramdown
+
+# About/contact
+author:
+  name:              Kim Deok Jung
+  url:               https://facebook.com/eye1ove
+  email:             eyelove@gmail.com
+
+# Custom vars
+version:             1.0.0
