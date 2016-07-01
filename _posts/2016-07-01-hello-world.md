@@ -1,5 +1,8 @@
 ---
+layout: post
 published: true
+fbcomments: false
+title: Untitled
 ---
 ## 처음으로 설치했습니다.
 
