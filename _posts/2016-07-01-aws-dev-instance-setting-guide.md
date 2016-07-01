@@ -26,8 +26,9 @@ sudo passwd
 
 ## mariadb v10.0
 
-> sudo vim /etc/yum.repos.d/mariadb.repo
 ```
+sudo vim /etc/yum.repos.d/mariadb.repo
+---
 [mariadb]
 name = MariaDB
 baseurl = http://yum.mariadb.org/10.0/centos6-amd64
@@ -365,4 +366,3 @@ cp index.php ssp/public/index.php
 
         $application_folder = dirname($public_path);
 ```
-
