@@ -11,17 +11,17 @@ MySql에서 csv파일로 import/export하는 쿼리문을 기록한다.
 #### mysql
 ```sql
 // import
+LOAD DATA LOCAL INFILE "/tmp/filename.csv" 
+INTO TABLE [table name] FIELDS TERMINATED BY ","
+IGNORE 1 LINES
+(col1,col2,@dummy,col4,col3);
+
+// export
 select col1 from table
 INTO OUTFILE '/tmp/filename.csv'
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '\\'
 LINES TERMINATED BY '\n';
-
-// export
-LOAD DATA LOCAL INFILE "/tmp/filename.csv" 
-INTO TABLE [table name] FIELDS TERMINATED BY ","
-IGNORE 1 LINES
-(col1,col2,@dummy,col4,col3);
 ```
 - 파일을 읽어올 때는 csv파일기준으로 컬럼을 매핑하며, skip이 필요할 경우 '@dummy'를 사용한다.
 
