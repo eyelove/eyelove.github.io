@@ -325,7 +325,7 @@ server {
     }
 
     location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_pass unix:/var/run/php7-fpm.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO $fastcgi_script_name;
@@ -353,6 +353,15 @@ html_errors = Off
 error_log = /home/httpd/logs/php-fpm/php_errors.log
 date.timezone = UTC
 ```
+
+sudo vim /etc/opt/remi/php70/php-fpm.d/www.conf
+```
+listen = /var/run/php7-fpm.sock
+listen.owner = nobody
+listen.group = nobody
+listen.mode = 0660
+```
+
 
 ```
 sudo service php70-php-fpm start
