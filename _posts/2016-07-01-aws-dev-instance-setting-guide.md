@@ -291,7 +291,7 @@ source /opt/remi/php70/enable
 
 sudo /opt/remi/php70/root/usr/bin/pecl install mongodb
 
-sudo echo "extension=mongodb.so" >> /opt/remi/php70/php.d/50-mongodb.ini
+sudo sh -c "echo 'extension=mongodb.so' > /etc/opt/remi/php70/php.d/50-mongodb.ini"
 ```
 
 #### test setting
