@@ -116,7 +116,7 @@ storage:
 
 ```
 sudo mkdir -p /home/mongo
-sudo chown mongod.mongod mongo
+sudo chown mongod.mongod /home/mongo
 sudo service mongod start
 ```
 
@@ -138,7 +138,7 @@ sudo make distclean
 ```
 
 ```
-make
+sudo make
 
 sudo cp src/redis-server /usr/local/bin/
 sudo cp src/redis-cli /usr/local/bin/
@@ -266,6 +266,8 @@ sudo chkconfig --add redis_47003
 
 ## nginx + php7
 ```
+sudo yum install openssl-devel
+
 cd /usr/local/src
 sudo rpm -Uvh ftp://ftp.scientificlinux.org/linux/scientific/6.4/x86_64/updates/fastbugs/scl-utils-20120927-8.el6.x86_64.rpm
 sudo wget http://mirrors.mediatemple.net/remi/enterprise/remi-release-6.rpm
@@ -285,8 +287,8 @@ sudo chown ec2-user.ec2-user /home/www
 - mongodb driver가 정상적으로 로드되지 않아 아래와 같이 직접 설치한다.
 
 ```
-sudo yum install openssl-devel
-sudo source /opt/remi/php70/enable
+source /opt/remi/php70/enable
+
 sudo /opt/remi/php70/root/usr/bin/pecl install mongodb
 
 sudo echo "extension=mongodb.so" >> /opt/remi/php70/php.d/50-mongodb.ini
@@ -298,7 +300,7 @@ sudo echo "extension=mongodb.so" >> /opt/remi/php70/php.d/50-mongodb.ini
 mkdir /home/www/ssp
 ```
 
-sudo vim /etc/nginx/nignx.conf
+sudo vim /etc/nginx/nginx.conf
 
 ```
 user nobody;
@@ -306,7 +308,7 @@ error_log /home/httpd/logs/nginx/error.log;
 access_log  /home/httpd/logs/access.log  main;
 ```
 
-sudo vim /etc/nginx/conf.d/ssp.conf
+sudo vim /etc/nginx/conf.d/dev.conf
 
 ```
 server {
@@ -327,6 +329,7 @@ server {
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_param PATH_INFO $fastcgi_script_name;
+        fastcgi_param CI_ENV "testing";
         include /etc/nginx/fastcgi_params;
     }
 }
