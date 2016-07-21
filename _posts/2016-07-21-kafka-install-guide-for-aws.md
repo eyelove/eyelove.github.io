@@ -1,7 +1,7 @@
 ---
 layout: post
 fbcomments: false
-published: false
+published: true
 title: Kafka Install Guide for AWS
 category: linux
 tags:
