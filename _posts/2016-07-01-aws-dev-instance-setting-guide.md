@@ -355,6 +355,7 @@ date.timezone = UTC
 ```
 
 sudo vim /etc/opt/remi/php70/php-fpm.d/www.conf
+
 ```
 listen = /var/run/php7-fpm.sock
 listen.owner = nobody
