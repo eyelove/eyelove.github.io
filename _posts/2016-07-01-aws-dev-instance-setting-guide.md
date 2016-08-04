@@ -7,6 +7,7 @@ category: linux
 tags:
   - linux
   - cli
+photo_url: ''
 ---
 
 ## EC2 Instance Type
@@ -368,6 +369,15 @@ listen.mode = 0660
 sudo service php70-php-fpm start
 sudo service nginx start
 ```
+
+
+##### Fileupload 500 Error
+
+```
+open() "/var/lib/nginx/tmp/client_body/0000000002" failed (13: Permission denied)
+chown -R nobody.nobody /var/lib/nginx
+```
+- http://nishal-tech.blogspot.kr/2013/06/nginx-13-permission-denied-while.html
 
 ## boot on
 
