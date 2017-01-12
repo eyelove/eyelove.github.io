@@ -7,7 +7,6 @@ category: linux
 tags:
   - linux
   - cli
-photo_url: ''
 ---
 
 ## EC2 Instance Type
@@ -275,7 +274,7 @@ sudo wget http://mirrors.mediatemple.net/remi/enterprise/remi-release-6.rpm
 sudo rpm -ivh remi-release-6.rpm
 
 sudo yum -y install nginx
-sudo yum -y --enablerepo=remi install php70 php70-php php70-php-fpm php70-php-cli php70-php-common  php70-php-json php70-php-mbstring php70-php-mcrypt php70-php-mysqlnd php70-php-opcache php70-php-pear php70-php-xml php70-php-devel php70-php-pecl-memcached php70-php-pecl-msgpack php70-php-pecl-redis
+sudo yum -y --enablerepo=remi install php70-php php70-php-fpm php70-php-cli php70-php-common  php70-php-json php70-php-mbstring php70-php-mcrypt php70-php-mysqlnd php70-php-opcache php70-php-pear php70-php-xml php70-php-devel php70-php-pecl-memcached php70-php-pecl-msgpack php70-php-pecl-redis
 
 
 sudo mkdir -p /home/httpd/logs/
